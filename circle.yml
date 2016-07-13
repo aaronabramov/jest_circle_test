@@ -1,0 +1,8 @@
+dependencies:
+  override:
+    - echo "dependencies are installed separately for each node version"
+
+test:
+  override:
+    - case $CIRCLE_NODE_INDEX in 0) nvm use 4 && node ./scripts/circle_ci_build ;; 1) nvm use 6 && node ./scripts/circle_ci_build ;; esac:
+        parallel: true
